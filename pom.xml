@@ -5,7 +5,7 @@
     <groupId>com.devops.azure</groupId>
     <artifactId>silos</artifactId>  
 	<packaging>war</packaging>
-	<version>${build.version}</version>
+	<version>1.0.0.${BUILD_NUMBER}</version>
 	<name>Demo Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
