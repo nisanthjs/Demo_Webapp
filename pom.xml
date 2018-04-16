@@ -6,7 +6,7 @@
     <artifactId>silos</artifactId>  
 	<packaging>war</packaging>
 	<version>1.0.0.${BUILD_NUMBER}</version>
-	<name>Demo Webapp</name>
+	<name>Demo_Silos_98855</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<jdk.version>1.7</jdk.version>
@@ -104,7 +104,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>DemoWebApp</finalName>
+		<finalName>Demo_Silos_98855</finalName>
 
 		<plugins>
 		    <!-- Eclipse project -->
