@@ -19,6 +19,9 @@ public class BaseController {
 
 		model.addAttribute("message", " DevOps on Cloud ");
 		model.addAttribute("counter", ++counter);
+		MySQLAccess mySQLAccess = new MySQLAccess();
+		String db_user = mySQLAccess.readDataBase();
+		model.addAttribute("db_user", db_user);
 		logger.debug("[welcome] counter : {}", counter);
 
 		// Spring uses InternalResourceViewResolver and return back index.jsp
