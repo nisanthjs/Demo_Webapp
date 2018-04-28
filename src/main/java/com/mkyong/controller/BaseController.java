@@ -1,5 +1,7 @@
 package com.mkyong.controller;
 
+import java.util.List;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,8 +22,8 @@ public class BaseController {
 		model.addAttribute("message", " DevOps on Cloud ");
 		model.addAttribute("counter", ++counter);
 		MySQLAccess mySQLAccess = new MySQLAccess();
-		String db_user = mySQLAccess.readDataBase();
-		model.addAttribute("db_user", db_user);
+		List<String> countrySet = mySQLAccess.readDataBase();
+		model.addAttribute("countrySet", countrySet);
 		logger.debug("[welcome] counter : {}", counter);
 
 		// Spring uses InternalResourceViewResolver and return back index.jsp

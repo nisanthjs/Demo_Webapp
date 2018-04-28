@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MySQLAccess {
     private Connection connect = null;
@@ -14,33 +16,33 @@ public class MySQLAccess {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
-    public String readDataBase(){
-    	String user = "DEF_USER";
+    public List<String> readDataBase(){
+    	List<String> countryMap = new ArrayList<String>();
         try {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.jdbc.Driver");
             // Setup the connection with the DB
             connect = DriverManager
-                    .getConnection("jdbc:mysql://localhost/sys?"
+                    .getConnection("jdbc:mysql://localhost/world?"
                             + "user=root&password=ansibleusr");
 
             // Statements allow to issue SQL queries to the database
             statement = connect.createStatement();
             // Result set get the result of the SQL query
             resultSet = statement
-                    .executeQuery("select user from sys.session");
+                    .executeQuery("select name from world.country");
             
             while (resultSet.next()) {
-            	user = resultSet.getString("user");
+            	countryMap.add(resultSet.getString("name"));
             }
-            return user;
+            return countryMap;
         } catch (Exception e) {
             //throw e;
         	System.out.println("Exception :- "+e.getMessage());
         } finally {
             close();
         }
-		return user;
+		return countryMap;
     }
 
     private void writeMetaData(ResultSet resultSet) throws SQLException {

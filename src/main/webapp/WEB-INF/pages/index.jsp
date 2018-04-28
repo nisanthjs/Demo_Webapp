@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
 <title>Silos Web App</title>
@@ -58,7 +59,18 @@ body {
 
 <div class="row">
   <div class="column" style="background-color:#aaa;">Ansible</div>
-  <div class="column" style="background-color:#bbb;">${db_user}</div>
+  <div class="column" style="background-color:#bbb;">${db_user}
+ 
+	<c:if test="${not empty countrySet}">
+
+		<ul>
+			<c:forEach var="countryName" items="${countrySet}">
+				<li>${countryName}</li>
+			</c:forEach>
+		</ul> 
+  
+	</c:if>
+  </div>
   <div class="column" style="background-color:#ccc;">${message}</div>
 </div>
 
