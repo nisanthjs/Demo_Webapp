@@ -15,7 +15,7 @@ body {
 
 /* Style the header */
 .header {
-    background-color: #f1f1f1;
+    background-color: #D6EAF8;
     padding: 30px;
     text-align: center;
     font-size: 35px;
@@ -39,7 +39,7 @@ body {
 
 /* Style the footer */
 .footer {
-    background-color: #f1f1f1;
+    background-color: #D6EAF8;
     padding: 10px;
     text-align: center;
 }
