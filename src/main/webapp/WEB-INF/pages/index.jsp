@@ -27,6 +27,7 @@ body {
     width: 33.33%;
     padding: 10px;
     height: 300px; /* Should be removed. Only for demonstration */
+	overflow: auto;
 }
 
 /* Clear floats after the columns */
@@ -58,20 +59,36 @@ body {
 </div>
 
 <div class="row">
-  <div class="column" style="background-color:#aaa;">Ansible</div>
-  <div class="column" style="background-color:#bbb;">${db_user}
- 
-	<c:if test="${not empty countrySet}">
-
+  <div class="column" style="background-color:#aaa;">
+   <p> World Countries </p> 
+  	<c:if test="${not empty countryList}">
 		<ul>
-			<c:forEach var="countryName" items="${countrySet}">
+			<c:forEach var="countryName" items="${countryList}">
 				<li>${countryName}</li>
 			</c:forEach>
 		</ul> 
-  
+	</c:if> 
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <p> Indian Languages </p>
+	<c:if test="${not empty languageList}">
+		<ul>
+			<c:forEach var="languageName" items="${languageList}">
+				<li>${languageName}</li>
+			</c:forEach>
+		</ul> 
 	</c:if>
   </div>
-  <div class="column" style="background-color:#ccc;">${message}</div>
+  <div class="column" style="background-color:#ccc;">
+     <p> Indian Cities </p>
+	<c:if test="${not empty cityList}">
+		<ul>
+			<c:forEach var="cityName" items="${cityList}">
+				<li>${cityName}</li>
+			</c:forEach>
+		</ul> 
+	</c:if>  
+  </div>
 </div>
 
 <div class="footer">

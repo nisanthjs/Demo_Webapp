@@ -22,8 +22,12 @@ public class BaseController {
 		model.addAttribute("message", " DevOps on Cloud ");
 		model.addAttribute("counter", ++counter);
 		MySQLAccess mySQLAccess = new MySQLAccess();
-		List<String> countrySet = mySQLAccess.readDataBase();
-		model.addAttribute("countrySet", countrySet);
+		List<String> countryList = mySQLAccess.readDataBase("select name from world.country");
+		model.addAttribute("countryList", countryList);
+		List<String> languageList = mySQLAccess.readDataBase("select Language from countrylanguage where CountryCode = 'IND'");
+		model.addAttribute("languageList", languageList);
+		List<String> cityList = mySQLAccess.readDataBase("select name from city where CountryCode = 'IND'");
+		model.addAttribute("cityList", cityList);
 		logger.debug("[welcome] counter : {}", counter);
 
 		// Spring uses InternalResourceViewResolver and return back index.jsp

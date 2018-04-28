@@ -16,8 +16,8 @@ public class MySQLAccess {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
-    public List<String> readDataBase(){
-    	List<String> countryMap = new ArrayList<String>();
+    public List<String> readDataBase(String query){
+    	List<String> resultList = new ArrayList<String>();
         try {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.jdbc.Driver");
@@ -30,19 +30,19 @@ public class MySQLAccess {
             statement = connect.createStatement();
             // Result set get the result of the SQL query
             resultSet = statement
-                    .executeQuery("select name from world.country");
+                    .executeQuery(query);
             
             while (resultSet.next()) {
-            	countryMap.add(resultSet.getString("name"));
+            	resultList.add(resultSet.getString("name"));
             }
-            return countryMap;
+            return resultList;
         } catch (Exception e) {
             //throw e;
         	System.out.println("Exception :- "+e.getMessage());
         } finally {
             close();
         }
-		return countryMap;
+		return resultList;
     }
 
     private void writeMetaData(ResultSet resultSet) throws SQLException {
