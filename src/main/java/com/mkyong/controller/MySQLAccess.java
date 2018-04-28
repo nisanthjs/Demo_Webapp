@@ -16,7 +16,7 @@ public class MySQLAccess {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
-    public List<String> readDataBase(String query){
+    public List<String> readDataBase(String query, String columnName){
     	List<String> resultList = new ArrayList<String>();
         try {
             // This will load the MySQL driver, each DB has its own driver
@@ -33,7 +33,7 @@ public class MySQLAccess {
                     .executeQuery(query);
             
             while (resultSet.next()) {
-            	resultList.add(resultSet.getString("name"));
+            	resultList.add(resultSet.getString(columnName));
             }
             return resultList;
         } catch (Exception e) {

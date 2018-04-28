@@ -15,7 +15,7 @@ body {
 
 /* Style the header */
 .header {
-    background-color: #D6EAF8;
+    background-color: #F2F4F4;
     padding: 30px;
     text-align: center;
     font-size: 35px;
@@ -39,7 +39,7 @@ body {
 
 /* Style the footer */
 .footer {
-    background-color: #D6EAF8;
+    background-color: #F2F4F4;
     padding: 10px;
     text-align: center;
 }
@@ -59,8 +59,9 @@ body {
 </div>
 
 <div class="row">
-  <div class="column" style="background-color:#aaa;">
-   <p> World Countries </p> 
+
+  <div class="column" style="background-color:#EBDEF0;">
+   <h4> World Countries </h4> 
   	<c:if test="${not empty countryList}">
 		<ul>
 			<c:forEach var="countryName" items="${countryList}">
@@ -69,18 +70,9 @@ body {
 		</ul> 
 	</c:if> 
   </div>
-  <div class="column" style="background-color:#bbb;">
-    <p> Indian Languages </p>
-	<c:if test="${not empty languageList}">
-		<ul>
-			<c:forEach var="languageName" items="${languageList}">
-				<li>${languageName}</li>
-			</c:forEach>
-		</ul> 
-	</c:if>
-  </div>
-  <div class="column" style="background-color:#ccc;">
-     <p> Indian Cities </p>
+  
+  <div class="column" style="background-color:#F2D7D5;">
+     <h4> Indian Cities </h4>
 	<c:if test="${not empty cityList}">
 		<ul>
 			<c:forEach var="cityName" items="${cityList}">
@@ -89,10 +81,22 @@ body {
 		</ul> 
 	</c:if>  
   </div>
+  
+  <div class="column" style="background-color:#D4EFDF;">
+    <h4> Indian Languages </h4>
+	<c:if test="${not empty languageList}">
+		<ul>
+			<c:forEach var="languageName" items="${languageList}">
+				<li>${languageName}</li>
+			</c:forEach>
+		</ul> 
+	</c:if>
+  </div>
+  
 </div>
 
 <div class="footer">
-  <p> Visits : ${counter} </p>
+  <p> User Visits : ${counter} </p>
 </div>
 
 </body>

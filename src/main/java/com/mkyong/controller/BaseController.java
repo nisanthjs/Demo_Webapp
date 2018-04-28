@@ -22,11 +22,11 @@ public class BaseController {
 		model.addAttribute("message", " DevOps on Cloud ");
 		model.addAttribute("counter", ++counter);
 		MySQLAccess mySQLAccess = new MySQLAccess();
-		List<String> countryList = mySQLAccess.readDataBase("select name from world.country");
+		List<String> countryList = mySQLAccess.readDataBase("select name from world.country", "name");
 		model.addAttribute("countryList", countryList);
-		List<String> languageList = mySQLAccess.readDataBase("select Language from countrylanguage where CountryCode = 'IND'");
+		List<String> languageList = mySQLAccess.readDataBase("select Language from world.countrylanguage where CountryCode = 'IND'","Language");
 		model.addAttribute("languageList", languageList);
-		List<String> cityList = mySQLAccess.readDataBase("select name from city where CountryCode = 'IND'");
+		List<String> cityList = mySQLAccess.readDataBase("select name from world.city where CountryCode = 'IND'","name");
 		model.addAttribute("cityList", cityList);
 		logger.debug("[welcome] counter : {}", counter);
 
