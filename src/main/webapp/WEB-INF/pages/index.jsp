@@ -58,7 +58,7 @@ body {
 
 <div class="row">
   <div class="column" style="background-color:#aaa;">Ansible</div>
-  <div class="column" style="background-color:#bbb;">Azure</div>
+  <div class="column" style="background-color:#bbb;">${db_user}</div>
   <div class="column" style="background-color:#ccc;">${message}</div>
 </div>
 
