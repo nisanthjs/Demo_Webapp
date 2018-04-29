@@ -61,7 +61,7 @@ body {
 <div class="row">
 
   <div class="column" style="background-color:#EBDEF0;">
-   <h4> World Countries </h4> 
+   <h4> World Countries List</h4> 
   	<c:if test="${not empty countryList}">
 		<ul>
 			<c:forEach var="countryName" items="${countryList}">
@@ -72,7 +72,7 @@ body {
   </div>
   
   <div class="column" style="background-color:#F2D7D5;">
-     <h4> Indian Cities </h4>
+     <h4> List of Indian Cities </h4>
 	<c:if test="${not empty cityList}">
 		<ul>
 			<c:forEach var="cityName" items="${cityList}">
@@ -83,7 +83,7 @@ body {
   </div>
   
   <div class="column" style="background-color:#D4EFDF;">
-    <h4> Indian Languages </h4>
+    <h4> List of Indian Languages </h4>
 	<c:if test="${not empty languageList}">
 		<ul>
 			<c:forEach var="languageName" items="${languageList}">
