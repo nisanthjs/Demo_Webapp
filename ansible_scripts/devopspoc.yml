@@ -1,0 +1,41 @@
+- name: Create Azure VM
+  hosts: localhost
+  connection: local
+  tasks:
+     - name: Execute the azure VM creation script
+       script: create_az_vm.sh
+
+     - name: Execute the fetch IP script
+       script: getazvmip.sh
+       register: task_result
+       until: task_result.rc == 0
+       retries: 3
+       delay: 1
+
+     - name: Retrieve Host IP from file
+       command: cat "host_ip.txt"
+       register: hostIPDet
+
+     - name: Print HOST IP
+       debug:
+          msg: "host IP: {{ hostIPDet.stdout }}"
+
+     - name: add host to group azure-vm
+       add_host:
+          name: "{{ hostIPDet.stdout }}"
+          groups: azure-vm
+
+- name: Install Mysql
+  hosts: azure-vm
+  become: yes
+  gather_facts: yes
+  roles:
+    - mysql
+
+- name: Install Tomcat 
+  hosts: azure-vm
+  remote_user: ansibleusr
+  vars:
+    app_version: "{{ version }}"
+  roles:
+    - tomcat8

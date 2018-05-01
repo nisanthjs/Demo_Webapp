@@ -1,0 +1,18 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "ansibleusr"
+    },
+    "adminPassword": {
+      "value": "Ansibleusr@123"
+    },
+    "sshKeyData": {
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyUMxCJg0tjXl2gJX7ISolfSgl3Mk0ktN+L7X/Q9E+UwIy+5GV+b2n1lITqd0J/yDfGEXS9QEKMF2WNVB3M4cLtyPfYVEjdudgkexrQRDoDjjFDvKxnbDw4k9CwaAxcQc11+p3NLx/XItJ7aGUSkk6NjLehlp2ZLHxrpuGYkzOADVXyAA4kYopBEF/qBSMcRU7HcFvD71FzyIs2sEFrV2ljS+lA4mMZ1OVz1IaVMOK7n4JcmrZiO6h7Qr7AHZ+gI9G/Cl4kim5V5IyexVM+nNRbNzP2MpdRbhe8j1p6HAw+/5W8mkrF5YUDCCJKN3BKq+wspGc/WmxRhe4iFUelZ4V ansibleusr@Ansible-VM-98855"
+    },
+    "dnsLabelPrefix": {
+      "value": "ansible-az-vm"
+    }
+  }
+}

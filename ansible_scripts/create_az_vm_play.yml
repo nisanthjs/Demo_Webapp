@@ -1,0 +1,6 @@
+- name: Create Azure VM
+  hosts: localhost
+  connection: local
+  tasks: 
+     - name: Execute the script
+       script: create_az_vm.sh
