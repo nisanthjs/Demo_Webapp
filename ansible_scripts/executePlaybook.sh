@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BUILD_VERSION=$1
+BUILD_VERSION=`cat app_version.txt`
 
 begin=$(date +"%s")
 
