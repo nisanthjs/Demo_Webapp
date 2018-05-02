@@ -1,0 +1,6 @@
+#MAVEN PROPERTIES
+java: 1.8
+maven: apache-maven-3.3.9
+appVersion: 1.0
+pomFileLocation: pom.xml
+mavenGoals: package
