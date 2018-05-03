@@ -28,6 +28,17 @@ pipeline {
 				'''
 			 }
 		}
+		stage('Provision VM & Deploy'){
+			 steps {
+				sh '''
+				    chmod -R 777 ${WORKSPACE}/ansible_scripts
+					cd ${WORKSPACE}/ansible_scripts
+					VERSION_BUILT="1.0.2.${BUILD_NUMBER}"
+					echo "$VERSION_BUILT" > app_version.txt
+					echo "jenkins" | sudo -S -H -u ansibleusr bash -c 'bash executePlaybook.sh'
+				'''
+			 }
+		}
 
     }
 	post {
