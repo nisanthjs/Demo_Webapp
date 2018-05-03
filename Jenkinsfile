@@ -23,7 +23,8 @@ pipeline {
 			 steps {
 				sh '''
 				    echo -e " Executing in host : "`hostname`
-					mvn -f pom.xml $mvnGoals
+					/opt/maven/bin/mvn --version
+					/opt/maven/bin/mvn -f pom.xml $mvnGoals
 				'''
 			 }
 		}
