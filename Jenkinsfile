@@ -7,7 +7,7 @@ pipeline {
 		username = "${props.username}"
 		password = "${props.password}"
 		scriptsRepoUrl = "${props.scriptsRepo}"
-		mavenGoals = ${props.mavenGoals}
+		mvnGoals = "${props.mavenGoals}"
     }
     stages {
 	    stage('SCM Checkout') {
@@ -22,7 +22,7 @@ pipeline {
 		stage('Build'){
 			 steps {
 				sh '''
-					mvn -f pom.xml $mavenGoals
+					mvn -f pom.xml $mvnGoals
 				'''
 			 }
 		}
