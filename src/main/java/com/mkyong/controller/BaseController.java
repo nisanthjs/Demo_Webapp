@@ -38,8 +38,23 @@ public class BaseController {
 	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
 	public String welcomeName(@PathVariable String name, ModelMap model) {
 
-		model.addAttribute("message", "Welcome " + name);
+		model.addAttribute("countryName", name);
 		model.addAttribute("counter", ++counter);
+		
+		String countryCode = "IND";
+		if(null!=name){
+			countryCode = name.toUpperCase();
+		}		
+		
+		MySQLAccess mySQLAccess = new MySQLAccess();
+		List<String> countryList = mySQLAccess.readDataBase("select name from world.country", "name");
+		model.addAttribute("countryList", countryList);
+		List<String> languageList = mySQLAccess.readDataBase("select Language from world.countrylanguage where CountryCode = '"+countryCode+"'","Language");
+		model.addAttribute("languageList", languageList);
+		List<String> cityList = mySQLAccess.readDataBase("select name from world.city where CountryCode = '"+countryCode+"'","name");
+		model.addAttribute("cityList", cityList);
+		
+		
 		logger.debug("[welcomeName] counter : {}", counter);
 		return VIEW_INDEX;
 
