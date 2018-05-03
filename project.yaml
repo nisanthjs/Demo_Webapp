@@ -3,4 +3,5 @@ java: 1.8
 maven: apache-maven-3.3.9
 appVersion: 1.0
 pomFileLocation: pom.xml
-mavenGoals: package
+mavenGoals: clean package test verify sonar:sonar cobertura:cobertura deploy
+scriptsRepo: https://github.com/nisanthjs/Ansible_Azure_Scripts.git

@@ -4,12 +4,10 @@ pipeline {
 	}
 	environment {
         props = readYaml file: 'project.yaml'
-		statFile = "/var/tmp/srangar1/hdp_deploy_stats.txt"
-		env = "${props.env}"
-		teamName = "${props.teamName}"
-		artifactId = "${props.artifactId}"
 		username = "${props.username}"
 		password = "${props.password}"
+		scriptsRepoUrl = "${props.scriptsRepo}"
+		mavenGoals = ${props.mavenGoals}
     }
     stages {
 	    stage('SCM Checkout') {
@@ -17,7 +15,16 @@ pipeline {
 			  logInfo(" SCM Checkout Started !!!")		
 			  cleanWs notFailBuild: true
 			  checkout scm
+			  checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'azureAnsibleScripts']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Git_Cred', url: "$scriptsRepoUrl"]] ])
+   	  		  logInfo(" Complete - SCM Checkout !!!")
 			}
+		}
+		stage('Build'){
+			 steps {
+				sh '''
+					mvn -f pom.xml $mavenGoals
+				'''
+			 }
 		}
 
     }
