@@ -15,7 +15,7 @@ pipeline {
 			  logInfo(" SCM Checkout Started !!!")		
 			  cleanWs notFailBuild: true
 			  checkout scm
-			  checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'azureAnsibleScripts']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Git_Cred', url: "$scriptsRepoUrl"]] ])
+			  checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'ansibleScripts']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Git_Cred', url: "$scriptsRepoUrl"]] ])
    	  		  logInfo(" Complete - SCM Checkout !!!")
 			}
 		}
@@ -31,8 +31,8 @@ pipeline {
 		stage('Provision VM & Deploy'){
 			 steps {
 				sh '''
-				    chmod -R 777 ${WORKSPACE}/ansible_scripts
-					cd ${WORKSPACE}/ansible_scripts
+				    chmod -R 777 ${WORKSPACE}/ansibleScripts
+					cd ${WORKSPACE}/ansibleScripts
 					VERSION_BUILT="1.0.2.${BUILD_NUMBER}"
 					echo "$VERSION_BUILT" > app_version.txt
 					echo "jenkins" | sudo -S -H -u ansibleusr bash -c 'bash executePlaybook.sh'
