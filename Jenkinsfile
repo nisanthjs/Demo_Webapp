@@ -22,6 +22,7 @@ pipeline {
 		stage('Build'){
 			 steps {
 				sh '''
+				    echo -e " Executing in host : "`hostname`
 					mvn -f pom.xml $mvnGoals
 				'''
 			 }
